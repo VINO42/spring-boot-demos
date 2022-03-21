@@ -25,12 +25,12 @@ public class MyConsumer {
     @Autowired
     CustomActiveMqProperties activeMqProperties;
 
-    @JmsListener(destination = "${my.queue.text}")    //用这个注解去监听 监听的队列
+    @JmsListener(destination = "${my.queue.text}", containerFactory = "jmsListenerContainerQueue")    //用这个注解去监听 监听的队列
     public void receiveText(String msg) {
         System.out.println("消费者成功获取到生产者的消息，msg" + msg);
     }
 
-    @JmsListener(destination = "${my.queue.obj}")    //用这个注解去监听 监听的队列
+    @JmsListener(destination = "${my.queue.obj}", containerFactory = "jmsListenerContainerQueue")    //用这个注解去监听 监听的队列
     public void receiveObj(Object msg) {
         System.out.println("消费者成功获取到生产者的消息，msg" + msg);
     }
